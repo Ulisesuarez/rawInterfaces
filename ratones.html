@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>MerchantBot</title>
+    <link rel="stylesheet" href="theme.css" />
+    <script src="js.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <header style="height:100px;">
+      <nav class="h-100 navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand"
+          ><img
+            style="max-width: 60px;height: auto;margin-right: 1em;"
+            src="images/logo.png"
+          />MerchantBot</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-2 ml-5">
+            <li class="nav-item active">
+              <a class="nav-link" href="home.html"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Productos
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Ordenadores</a>
+                <a class="dropdown-item" href="#">Componentes</a>
+                <a class="dropdown-item" href="#">Consolas</a>
+                <a class="dropdown-item" href="#">SmartPhones</a>
+                <a class="dropdown-item" href="#">Juegos</a>
+                <a class="dropdown-item" href="#">Software</a>
+                <a class="dropdown-item" href="#">Electrodomésticos</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contacto</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0 ml-5 mr-5">
+            <input
+              style="max-width: 200px;"
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button
+              class="btn btn-outline-info my-2 my-sm-0 mr-5 "
+              style="padding: 3px !important"
+              type="submit"
+            >
+              <ion-icon
+                style="font-size: 24px"
+                id="searchIcon"
+                name="search"
+              ></ion-icon>
+            </button>
+          </form>
+          <ul class="navbar-nav mr-auto ml-5">
+            <li class="nav-item mr-5 ">
+              <button class="btn btn-outline-info" data-toggle="modal" data-target="#Modal">
+                Entra o Registrate
+              </button>
+            </li>
+            <li class="nav-item ml-5">
+              <a class="nav-link" data-toggle="modal" data-target="#carritoModal"
+                ><ion-icon size="large" name="cart"></ion-icon
+                ><span style="background-color:#c4daf4" class="badge">1</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+<!--MODALES DE REGISTRO Y LOGIN-->
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab"
+                            aria-controls="nav-login-tab" aria-selected="true">Entra</a>
+                        <a class="nav-item nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab"
+                            aria-controls="nav-register-tab" aria-selected="false">Registrate</a>
+                    </div>
+                </nav>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="nav-login-tab">
+                        <form action="/action_page.php" class="needs-validation" novalidate>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" required>
+                              <div class="valid-feedback">
+                                Parece correcto!
+                              </div>
+                              <div class="invalid-feedback">
+                                Por favor introduzca un email válido.
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Contraseña:</label>
+                                <input type="password" class="form-control" id="pwd" required>
+                              <div class="valid-feedback">
+                                Parece correcto!
+                              </div>
+                              <div class="invalid-feedback">
+                                La contraseña es requerida.
+                              </div>
+                                <span class="mr-5"><a href="#">¿Olvidaste tu contraseña?</a> </span> 
+                                <span class="form-group">
+                                <label class="form-check-label ml-5">
+                                    <span class="mr-2">Recordarme</span><input style="margin-top: 1em;"  type="checkbox"> 
+                                </label>
+                            </span>
+                            </div>
+
+                            <button style="margin-left: 80%" type="submit" class="btn btn-primary">Entrar</button>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="nav-register-tab">
+                    <form action="/action_page.php" novalidate class="needs-validation">
+                        <div class="form-group">
+                            <label for="emailreg">Nombre de Usuario:</label>
+                            <input type="text" class="form-control" id="userreg" required>
+                          <div class="valid-feedback">
+                            Parece correcto!
+                          </div>
+                          <div class="invalid-feedback">
+                            Introduzca su nombre de usuario.
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailreg">Email:</label>
+                            <input type="email" class="form-control" id="emailreg" required>
+                          <div class="valid-feedback">
+                            Parece correcto!
+                          </div>
+                          <div class="invalid-feedback">
+                            Por favor introduzca un email válido.
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="pwdreg">Contraseña:</label>
+                            <input type="email" class="form-control" id="pwdreg" required>
+                          <div class="valid-feedback">
+                            Parece correcto!
+                          </div>
+                          <div class="invalid-feedback">
+                            Por favor introduzca una contraseña.
+                          </div>
+                        </div>         
+                        <div class="form-group">
+                            <label for="pwdregrep">Repetir contraseña:</label>
+                            <input type="password" class="form-control" id="pwdregrep" required>
+                          <div class="valid-feedback">
+                            Aquí va una validación de si son iguales en js que entiendo no hay que hacer
+                          </div>
+                          <div class="invalid-feedback">
+                            Por favor repita su contraseña.
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-check-label">
+                                <a class="mr-2" href="terminos.hmtl">Acepto los terminos y condiciones</a><input type="checkbox" required>
+                              <div class="valid-feedback">
+                                No te queda de otra.
+                              </div>
+                              <div class="invalid-feedback">
+                                Venga márcala.
+                              </div>
+                            </label>
+                        </div>
+
+                        <button style="margin-left: 75%" type="submit" class="btn btn-primary">Registrarme</button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------------------------->
+    <!-- Modal carrito -->
+    <div class="modal fade" id="carritoModal" tabindex="-1" role="dialog" aria-labelledby="carritoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="carritoModalLabel">Tu carrito</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Tienes 1 producto</p>
+                    <div class="row">
+                        <div class="card ml-3" style="width: 8rem;">
+                            <div class="card-body">
+                                <img class="card-img-top"  style="width: 60px; height: 60px" src="images/productojoke.jpg">
+                                <h6 class="card-subtitle mb-2 text-muted">Destructor</h6>
+                            </div>
+                        </div>
+                        <a href="#ofertas" onclick="hideModal()" data-dismiss="modal"><div class="card ml-2" style="width: 10rem;">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <ion-icon style="font-size: 50px" name="add"></ion-icon>
+                                </div>
+                                <h6 class="card-subtitle mb-2 text-muted">Seguir comprando</h6>
+                            </div>
+                        </div></a>
+                    </div>
+                    <div class="text-right">
+                        <strong>TOTAL
+                            <span  style="color: #65a535;">49.95€</span>
+                        </strong>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tramitar pedido</button>
+                    <button type="button" onclick="irAlCarrito()" class="btn btn-outline-info" data-dismiss="modal">Ir al carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+      <div class="row">
+        <aside class="col-sm-2 pl-5">
+          <h5>Categorías</h5>
+          <div class="panel-group" id="acordeon">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h6 class="panel-title">
+                  <a
+                    data-toggle="collapse"
+                    data-parent="#acordeon"
+                    href="#colapsarUno"
+                    ><span class="glyphicon glyphicon-folder-close"> </span
+                    >Ordenadores</a
+                  >
+                </h6>
+              </div>
+              <div id="colapsarUno" class="panel-collapse collapse in">
+                <div class="panel-body">
+                  <table class="table">
+                    <tr>
+                      <td>
+                        <a href="#">Portátiles</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Sobremesa</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Táctiles</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Cuánticos</a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h6 class="panel-title">
+                  <a
+                    data-toggle="collapse"
+                    data-parent="#acordeon"
+                    href="#colapsarDos"
+                    ><span class="glyphicon glyphicon-th"> </span>Componentes</a
+                  >
+                </h6>
+              </div>
+              <div id="colapsarDos" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <table class="table">
+                    <tr>
+                      <td>
+                        <a href="#">Teclados</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Ratones</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Gráficas</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">RAM</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Discos Duros</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Procesadores</a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h6 class="panel-title">
+                  <a
+                    data-toggle="collapse"
+                    data-parent="#acordeon"
+                    href="#colapsarTres"
+                    ><span class="glyphicon glyphicon-user"> </span>Consolas</a
+                  >
+                </h6>
+              </div>
+              <div id="colapsarTres" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <table class="table">
+                    <tr>
+                      <td>
+                        <a href="#">Microsoft</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Sony</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Nintendo</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Atari</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Sega</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Bandai</a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h6 class="panel-title">
+                  <a
+                    data-toggle="collapse"
+                    data-parent="#acordeon"
+                    href="#colapsarCuatro"
+                    >SmartPhones</a
+                  >
+                </h6>
+              </div>
+              <div id="colapsarCuatro" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <table class="table">
+                    <tr>
+                      <td>
+                        <a href="#">Android</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">IOS</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Windows Phone</a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h6 class="panel-title">
+                  <a
+                    data-toggle="collapse"
+                    data-parent="#acordeon"
+                    href="#colapsarCinco"
+                    >Juegos</a
+                  >
+                </h6>
+              </div>
+              <div id="colapsarCinco" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <table class="table">
+                    <tr>
+                      <td>
+                        <a href="#">Acción</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Arcade</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Aventuras</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Plataformas</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Rol</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Simulación</a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h6 class="panel-title">
+                  <a
+                    data-toggle="collapse"
+                    data-parent="#acordeon"
+                    href="#colapsarSeis"
+                    >Software</a
+                  >
+                </h6>
+              </div>
+              <div id="colapsarSeis" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <table class="table">
+                    <tr>
+                      <td>
+                        <a href="#">Seguridad</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Ofimática</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Multimedia</a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h6 class="panel-title">
+                  <a
+                    data-toggle="collapse"
+                    data-parent="#acordeon"
+                    href="#colapsarSiete"
+                    >Electrodomésticos</a
+                  >
+                </h6>
+              </div>
+              <div id="colapsarSiete" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <table class="table">
+                    <tr>
+                      <td>
+                        <a href="#">Cocina</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Limpieza</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Seguridad</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Multimedia</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="#">Futuristas</a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+        <div class="col-sm-9">
+          <div class="container">
+            <div id="breadcrumb" class="row">
+              <div class="col-sm-auto">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a href="home.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                      <a href="componentes.html">Componentes</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      Ratones
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+            <div class="row mt-2 mb-2">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-3">
+              <label for="rango">Precio max:</label>
+                <input style="max-width: 4em; background-color: white;color: black;box-shadow: none; border: none" type="text" id="textInput" value="" disabled>
+
+              <input type="range" class="custom-range" min="0" max="2000" id="rango" onchange="updateTextInput(this.value);">
+              </div>
+              <div class="col-sm-4"></div>
+              <div class="col-sm-4">
+                Ordenar por: <select class="custom-select">
+                  <option selected>Precio, más barato primero</option>
+                  <option value="1">Precio, más caro primero</option>
+                  <option value="2">A...Z</option>
+                  <option value="3">Z...A</option>
+                </select>
+              </div>
+            </div>
+            <div class="row mt-2 mb-2">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-9 mb-3">
+                <span class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="inal" checked>
+                  <label class="custom-control-label" for="inal">Inalámbrico</label>
+                </span>
+                <span class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="infra">
+                  <label class="custom-control-label" for="infra">Infrarojos</label>
+                </span>
+                <span class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="des">
+                  <label class="custom-control-label" for="des">Deslizador</label>
+                </span>
+                <span class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="AlPre">
+                  <label class="custom-control-label" for="AlPre">Alta precisión</label>
+                </span>
+              </div>
+            </div>
+            <div class="row mt-2 mb-2">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-10">
+                <div class="card">
+                  <div class="card-body">
+                    <h1 class="card-title text-center">Ratones</h1>
+                    <div class="row">
+                      <div class="col-sm">
+                        <div class="card">
+                          <a href="producto.html"><figure class="destacadosCat">
+                          <img class="card-img-top" src="images/ratonTrust.jpg" alt="Card image cap">
+                          </figure></a>
+                          <h5 class="text-center" style="font-weight: bolder;color:#a53565;position: relative; top:-10px;">20€</h5>
+                          <div class="card-body text-center" style="margin-top:-10px;">
+                            <a href="producto.html"><h5 class="card-title">Ratón Trust 210A</h5></a>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm">
+                        <div class="card">
+                          <a href="producto.html"><figure class="destacadosCat">
+                          <img class="card-img-top" src="images/ratonTrust.jpg" alt="Card image cap">
+                          </figure></a>
+                            <h5 class="text-center" style="font-weight: bolder;color:#a53565;position: relative; top:-10px;">20€</h5>
+                          <div class="card-body text-center" style="margin-top:-10px;">
+                            <a href="producto.html"><h5 class="card-title">Ratón Trust 210A</h5></a>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm">
+                        <div class="card">
+                          <a href="producto.html"><figure class="destacadosCat">
+                          <img class="card-img-top" src="images/ratonTrust.jpg" alt="Card image cap">
+                          </figure></a>
+                            <h5 class="text-center" style="font-weight: bolder;color:#a53565;position: relative; top:-10px;">20€</h5>
+                          <div class="card-body text-center" style="margin-top:-10px;">
+                            <a href="producto.html"><h5 class="card-title">Ratón Trust 210A</h5></a>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col-sm">
+                        <div class="card">
+                          <a href="producto.html"><figure class="destacadosCat">
+                          <img class="card-img-top" src="images/ratonTrust.jpg" alt="Card image cap">
+                          </figure></a>
+                            <h5 class="text-center" style="font-weight: bolder;color:#a53565;position: relative; top:-10px;">19.99€</h5>
+                          <div class="card-body text-center" style="margin-top:-10px;">
+                            <a href="producto.html"><h5 class="card-title">Ratón Trust 210A</h5></a>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm">
+                        <div class="card">
+                          <a href="producto.html"><figure class="destacadosCat">
+                          <img class="card-img-top" src="images/ratonTrust.jpg" alt="Card image cap">
+                          </figure></a>
+                            <h5 class="text-center" style="font-weight: bolder;color:#a53565;position: relative; top:-10px;">20€</h5>
+                          <div class="card-body text-center" style="margin-top:-10px;">
+                            <a href="producto.html"><h5 class="card-title">Ratón Trust 210A</h5></a>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+                            <ion-icon class="stars"  name="star"></ion-icon>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm">
+                        <div style="min-height: 300.5px" class="card">
+                          <a href="producto.html"><figure class="destacadosCat">
+                          <img class="card-img-top" src="images/barato.jpg" alt="Card image cap">
+                          </figure></a>
+                            <h5 class="text-center" style="font-weight: bolder;color:#a53565;position: relative; top:-10px;">2€</h5>
+                          <div class="card-body text-center" style="margin-top:-10px;">
+                            <a href="producto.html"><h5 class="card-title">Ratón Trust 0A</h5></a>
+                            <ion-icon class="stars" name="star"></ion-icon>
+                            <ion-icon class="stars" name="star"></ion-icon>
+                            <ion-icon class="stars" name="star-outline"></ion-icon>
+                            <ion-icon class="stars" name="star-outline"></ion-icon>
+                            <ion-icon class="stars" name="star-outline"></ion-icon>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-sm-3 ml-5"></div>
+              <div class="col-sm-7 mr-5">
+              <nav aria-label="Page navigation">
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">4</a></li>
+                  <li class="page-item"><a class="page-link" href="#">5</a></li>
+                  <li class="page-item"><a class="page-link" href="#">6</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+              </nav>
+              </div>
+            </div>
+            <div class="row mt-5 mb-5 divider">
+                <hr style="border:2px #c4daf4 solid;width:80%">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <footer
+      style="width:90vw;margin-left:50px"
+      class="page-footer pt-3"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3 ml-2">
+            <ul class="list-unstyled list-inline">
+              <li class="list-inline-item">
+                <a class="btn mx-1">
+                  <ion-icon size="large" name="logo-facebook"></ion-icon>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn mx-1">
+                  <ion-icon size="large" name="logo-twitter"></ion-icon>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn mx-1">
+                  <ion-icon size="large" name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-6 ml-2">
+            <ul class="nav justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Política de Privacidad</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Política de Cookies</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-2 ml-2">
+            C/ calle Carrer <br />
+            Palma, Baleares<br />
+            671605097<br />
+            ulises203@msn.com
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright font-small text-center py-0">
+        © 2019 Copyright • MerchantBot, S.L. Diseño web y marketing online:
+      </div>
+    </footer>
+    <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+  </body>
+</html>
